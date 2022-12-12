@@ -21,4 +21,14 @@ using OpenQA.Selenium.Chrome;
         IWebElement LoginButton = driver.FindElement(By.XPath("//*[@id=\"loginForm\"]/form/div[3]/input[1]"));
         LoginButton.Click();
 
-        
+//check if user has loggedin successfully
+IWebElement helloHari = driver.FindElement(By.XPath("//*[@id='LogoutFrom']/uL/Li/a"));
+
+if(helloHari.Text == "Hello hari!")
+{
+    Console.WriteLine("Logged in successfully.test passed.");
+}
+else
+{
+    Console.WriteLine("Login failed,test failled."); 
+}
