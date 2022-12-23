@@ -8,6 +8,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\**" />
+    <Compile Remove="Step Definitions\**" />
+    <EmbeddedResource Remove="Features\**" />
+    <EmbeddedResource Remove="Step Definitions\**" />
+    <None Remove="Features\**" />
+    <None Remove="Step Definitions\**" />
+    <SpecFlowFeatureFiles Remove="Features\**" />
+    <SpecFlowFeatureFiles Remove="Step Definitions\**" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\**" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Step Definitions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="Microsoft.NETCore.App" Version="2.2.8" />
     <PackageReference Include="Selenium.Support" Version="4.6.0" />
     <PackageReference Include="Selenium.WebDriver" Version="4.6.0" />
@@ -15,11 +29,6 @@
     <PackageReference Include="SpecFlow" Version="3.9.74" />
     <PackageReference Include="SpecFlow.NUnit" Version="3.9.74" />
     <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.9.74" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\" />
-    <Folder Include="Step Definitions\" />
   </ItemGroup>
 
 </Project>
