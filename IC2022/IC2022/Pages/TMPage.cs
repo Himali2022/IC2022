@@ -1,5 +1,6 @@
-﻿using OpenQA.Selenium;
-
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using System.Security.Policy;
 
 namespace IC2022.Pages
 {
@@ -48,20 +49,15 @@ namespace IC2022.Pages
             gotoLastPageButton.Click();
 
             IWebElement newCode = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[1]"));
+            IWebElement newDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[3]"));
+            IWebElement newPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[4]"));
 
-            if (newCode.Text == "November2022")
-            {
-                Console.WriteLine("Time record created successfully.");
-            }
-            else
-            {
-                Console.WriteLine("Time record hasn,t created successfully");
-            }
-
-
+            Assert.That(newCode.Text == "November2022","Actual code and expected code do not match");
+            Assert.That(newDescription.Text == "November2022", "Actual description and expected description do not match");
+            Assert.That(newPrice.Text == "$12.00", "Actual price and expected price do not match");
         }
 
-        public void EditTM();
+        public void TMPage.EditTM();
 
         {   //clik on Edit button
             IWebElement editButton = driver.FindElement(By.XPath(//*[@id="tmsGrid"]/div[3]/table/tbody/tr[1]/td[5]/a[1]));
@@ -75,42 +71,29 @@ namespace IC2022.Pages
             tmOption.Click();
 
             //edit code in the code text box
-            IWebElement codeTextbox = driver.FindElement(By.Id(//*[@id="Code"]));
-            codeTextBox.clear();
+            IWebElement codeTextbox = driver.FindElement(By.XPath(//*[@id="tmsGrid"]/div[3]/table/tbody/tr[1]/td[1]));
+            codeTextBox.Clear();
             codeTextBox.SendKeys("ABC");
 
             //cheak if time record edited successfully
             IWebElement gotoFirstPageButton = driver.FindElement(By.XPath(//*[@id="tmsGrid"]/div[4]/ul/li[1]/span));
             gotoFirstPageButton.Click();
 
-            if(newCode.Text == "ABC")
-            {
-                Console.WriteLine("Time record edited successfully");
-            }
-            else
-            {       
-                Console.WriteLine(Time record hasn't edited successfull);
-        }
+            IWebElement codeTextbox = driver.FindElement(By.XPath(//*[@id="tmsGrid"]/div[3]/table/tbody/tr[1]/td[1]));)
+            Assert.That(codeTextBox.Text == "ABC", "Actual code and expected code do not match");
 
-        public void DeleteTM();
+        public void TMPage.DeleteTM();
 
         {   //click on delete button
             IWebElement deleteButton = driver.FindElement(By.XPath(//*[@id="tmsGrid"]/div[3]/table/tbody/tr[1]/td[5]/a[2]));
             deleteButton.Click();
 
             //check if time record deleted successfully
+            IWebElement firstCode = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[1]"));
+            IWebElement firstDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[3]"));
+            IWebElement firstPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[4]"));
 
-            
-        if(newCode,newTypeCode,newDescription,newPricePerUnit == "null")
-
-        {   
-            Console.WriteLine("Time record deleted successfully");
-        }
-        else
-        {
-            Console.WriteLine("Time record hasn't deleted successfully");
-        }
-
+            Assert.That(firstCode,firstdDescription,firstPrice = "null",Actual code,description,price clear or not");
 
         }
 
