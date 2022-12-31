@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-
+﻿
 
 namespace IC2022.Pages
 {

@@ -1,6 +1,5 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using System.Security.Policy;
+﻿
+
 
 namespace IC2022.Pages
 {
@@ -19,7 +18,7 @@ namespace IC2022.Pages
             typeCodeDropdown.Click();
 
             IWebElement timeOption = driver.FindElement(By.XPath("//*[@id='TypeCode_listbox']/li[2]"));
-            tmOption.Click();
+            timeOption.Click();
 
             //enter code in the code textbox
             IWebElement codeTextbox = driver.FindElement(By.Id("Code"));
@@ -59,41 +58,70 @@ namespace IC2022.Pages
 
         public void TMPage.EditTM();
 
-        {   //clik on Edit button
-            IWebElement editButton = driver.FindElement(By.XPath(//*[@id="tmsGrid"]/div[3]/table/tbody/tr[1]/td[5]/a[1]));
-            editButton.Click();
+        {   
+            Thread.Sleep(3000);
+            IWebElement goToLastPageButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
+            goToLastPageButton.Click();
 
-            //select type in the type code dropdown
-            IWebElement typeCodeDropdown = driver.FindElement(By.XPath(//*[@id="TimeMaterialEditForm"]/div/div[1]/div/span[1]/span/span[2]/span));
-            typeCodeDropdown.Click();
+            IWebElement findNewRecordCreated = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
 
-            IWebElement timeOption = driver.FindElement(By.XPath(//*[@id="TimeMaterialEditForm"]/div/div[1]/div/span[1]/span/span[1]));
-            tmOption.Click();
+            if (findNewRecordCreated.Text == "November2022")
+            {
+                Thread.Sleep(2000);
+                // click edit button
+                IWebElement editButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
+                editButton.Click();
+            }
+            else
+            {
+                Assert.Fail("Record to be edited hasn't been found. Record not edited");
+            }
 
-            //edit code in the code text box
-            IWebElement codeTextbox = driver.FindElement(By.XPath(//*[@id="tmsGrid"]/div[3]/table/tbody/tr[1]/td[1]));
-            codeTextBox.Clear();
-            codeTextBox.SendKeys("ABC");
+            // edit code textbox 
+            IWebElement editCodeTextbox = driver.FindElement(By.Id("Code"));
+            editCodeTextbox.Clear();
+            editCodeTextbox.SendKeys("C002");
+            Thread.Sleep(1500);
 
-            //cheak if time record edited successfully
-            IWebElement gotoFirstPageButton = driver.FindElement(By.XPath(//*[@id="tmsGrid"]/div[4]/ul/li[1]/span));
-            gotoFirstPageButton.Click();
+            // edit description textbox
+            IWebElement editDescriptionTextbox = driver.FindElement(By.Id("Description"));
+            editDescriptionTextbox.Clear();
+            editDescriptionTextbox.SendKeys("Firstone");
+            Thread.Sleep(1500);
 
-            IWebElement codeTextbox = driver.FindElement(By.XPath(//*[@id="tmsGrid"]/div[3]/table/tbody/tr[1]/td[1]));)
-            Assert.That(codeTextBox.Text == "ABC", "Actual code and expected code do not match");
+            // edit price per unit textbox
+            IWebElement overlappingTag = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[4]/div/span[1]/span/input[1]"));
+            IWebElement pricePerUnitTextbox = driver.FindElement(By.Id("Price"));
+
+            overlappingTag.Click();
+            pricePerUnitTextbox.Clear();
+            overlappingTag.Click();
+            pricePerUnitTextbox.SendKeys("200");
+
+            // click save button
+            IWebElement clickSavebutton = driver.FindElement(By.Id("SaveButton"));
+            clickSavebutton.Click();
+            Thread.Sleep(1500);
+
+            // click go to the late page
+            IWebElement gotothelastpageButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
+            gotothelastpageButton.Click();
+            Thread.Sleep(1500);
 
         public void TMPage.DeleteTM();
 
-        {   //click on delete button
-            IWebElement deleteButton = driver.FindElement(By.XPath(//*[@id="tmsGrid"]/div[3]/table/tbody/tr[1]/td[5]/a[2]));
+        {
+            Thread.Sleep(3000);
+            IWebElement goToLastPageButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
+            goToLastPageButton.Click();
+
+            // click delete button
+            IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
             deleteButton.Click();
+            Thread.Sleep(1500);
 
-            //check if time record deleted successfully
-            IWebElement firstCode = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[1]"));
-            IWebElement firstDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[3]"));
-            IWebElement firstPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[4]"));
-
-            Assert.That(firstCode,firstdDescription,firstPrice = "null",Actual code,description,price clear or not");
+            // conforming delete ok button
+            driver.SwitchTo().Alert().Accept();
 
         }
 

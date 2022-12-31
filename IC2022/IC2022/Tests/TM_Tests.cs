@@ -1,46 +1,43 @@
-﻿using IC2022.Pages;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using NUnit.Framework;
-using IC2022.Utilities;
+﻿
 
 namespace IC2022.Tests
 {
     [TextFixture]
+    [Parallelizable]
     public class TMTests : CommonDriver
     {
-        [SetUp]
-        public void LoginSteps()
+
+        [Test,Order(1), Description ("check if user is able to create a new record with valid data")]
+        public void CreateTM_Test()
         {
-            new ChromeDriver();
-
-            //login page object initialization and definition
-            LoginPage loginPageObj = new LoginPage();
-            loginPageObj.LoginActions(driver);
-
             //Home page object initialization and definition
             HomePage homePageObj = new HomePage();
             homePageObj.GoToTMPage(driver);
-        }
-        [Test]
-        public void CreateTM_Test()
-        { 
+
             //TM Page object initialization and definition
             TMPage tmPageObj = new TMPage();
             tmPageObj.CreateTM(driver);
 
         }
-        [Test]
+        [Test,Order(2),Description("check if user is able to edit an existing record with valid data")]
         public void EditTM_Test()
         {
+            //Home page object initialization and definition
+            HomePage homePageObj = new HomePage();
+            homePageObj.GoToTMPage(driver);
+
             TMPage tmPageObj = new TMPage();
             tmPageObj.EditTM(driver);
 
         }
 
-        [Test]
+        [Test,Order(3), Description("check if user is able to delete an existing record successfully")]
         public void DeleteTM_Test()
         {
+            //Home page object initialization and definition
+            HomePage homePageObj = new HomePage();
+            homePageObj.GoToTMPage(driver);
+
             TMPage tmPageObj = new TMPage();
             tmPageObj.DeleteTM(driver);
 
