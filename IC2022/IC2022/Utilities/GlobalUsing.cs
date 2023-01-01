@@ -6,9 +6,11 @@ global using OpenQA.Selenium.Chrome;
 global using OpenQA.Selenium.Support.UI;
 
 
+
 namespace IC2022.Utilities
 {
     internal class GlobalUsing
     {
+
     }
 }

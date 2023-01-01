@@ -11,7 +11,7 @@ namespace IC2022.Pages
 
             // launch turnup portal
             driver.Navigate().GoToUrl("http://horse.industryconnect.io/Account/Login?ReturnUrl=%2f");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
 
             // identify username and enter valid username
             IWebElement usernameTextbox = driver.FindElement(By.Id("UserName"));

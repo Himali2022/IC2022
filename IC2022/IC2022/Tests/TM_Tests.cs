@@ -19,6 +19,7 @@ namespace IC2022.Tests
             tmPageObj.CreateTM(driver);
 
         }
+
         [Test,Order(2),Description("check if user is able to edit an existing record with valid data")]
         public void EditTM_Test()
         {
@@ -42,6 +43,7 @@ namespace IC2022.Tests
             tmPageObj.DeleteTM(driver);
 
         }
+
         [TearDown]
         public void CloseTestRun()
         {

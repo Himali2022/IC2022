@@ -8,6 +8,7 @@ namespace IC2022.Utilities
         {
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, seconds));
         }
+
             if(locator == "XPath")
             {
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(locatorValue)));
@@ -23,6 +24,7 @@ namespace IC2022.Utilities
 
         public static void WaitForElementToExist(IWebDriver driver, string locator, string locatorvalue, int seconds) 
         {
+
             if (locator == "XPath")
             { 
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(locatorValue))); 
@@ -35,6 +37,7 @@ namespace IC2022.Utilities
             { 
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.id(locatorValue))); 
             }
+
         }
 
     }

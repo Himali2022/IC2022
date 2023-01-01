@@ -118,7 +118,7 @@ namespace IC2022.Pages
             // click delete button
             IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
             deleteButton.Click();
-            Thread.Sleep(1500);
+            Thread.Sleep(2000);
 
             // conforming delete ok button
             driver.SwitchTo().Alert().Accept();

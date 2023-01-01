@@ -15,6 +15,7 @@ namespace IC2022.Utilities
             LoginPage loginPageObj = new LoginPage();
             loginPageObj.LoginActions(driver);
         }
+
         [OneTimeTearDown]
         public void CloseTestRun()
         {
