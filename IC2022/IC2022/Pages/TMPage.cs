@@ -80,13 +80,13 @@ namespace IC2022.Pages
             // edit code textbox 
             IWebElement editCodeTextbox = driver.FindElement(By.Id("Code"));
             editCodeTextbox.Clear();
-            editCodeTextbox.SendKeys("C002");
+            editCodeTextbox.SendKeys("C001");
             Thread.Sleep(1500);
 
             // edit description textbox
             IWebElement editDescriptionTextbox = driver.FindElement(By.Id("Description"));
             editDescriptionTextbox.Clear();
-            editDescriptionTextbox.SendKeys("Firstone");
+            editDescriptionTextbox.SendKeys("IC2022");
             Thread.Sleep(1500);
 
             // edit price per unit textbox
@@ -96,7 +96,7 @@ namespace IC2022.Pages
             overlappingTag.Click();
             pricePerUnitTextbox.Clear();
             overlappingTag.Click();
-            pricePerUnitTextbox.SendKeys("200");
+            pricePerUnitTextbox.SendKeys("300");
 
             // click save button
             IWebElement clickSavebutton = driver.FindElement(By.Id("SaveButton"));
