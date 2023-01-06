@@ -2,7 +2,7 @@
 
 namespace IC2022.Pages
 {
-    public class LoginPage
+    public class LoginPage : CommonDriver
     {
         public void LoginActions(IWebDriver, driver);
         {

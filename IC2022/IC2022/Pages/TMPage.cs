@@ -1,9 +1,12 @@
 ﻿
 
 
+using OpenQA.Selenium.Internal;
+using System.Security.Cryptography.X509Certificates;
+
 namespace IC2022.Pages
 {
-    public class TMPage
+    public class TMPage : CommonDriver
     {
         public void CreateTM(IWebDriver.driver)
 
@@ -46,20 +49,24 @@ namespace IC2022.Pages
             //cheak if new time record has been created successfully
             IWebElement gotoLastPageButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]div/[4]/a[4]/span"));
             gotoLastPageButton.Click();
-
-            IWebElement newCode = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[1]"));
-            IWebElement newDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[3]"));
-            IWebElement newPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[4]"));
-
-            Assert.That(newCode.Text == "November2022","Actual code and expected code do not match");
-            Assert.That(newDescription.Text == "November2022", "Actual description and expected description do not match");
-            Assert.That(newPrice.Text == "$12.00", "Actual price and expected price do not match");
+            Thread.Sleep(2000);
+            
         }
+        public string GetCode(IWebDriver driver)
+            IWebElement actualCode = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[1]"));
+            return actualCode.Text;
+        public string GetDescription(IWebDriver driver)
+            IWebElement actualDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[3]"));
+            return actualDescription.Text;
+        public string GetPrice(IWebDriver driver)
+            IWebElement actualPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[4]"));
+            return actualPrice.Text;
 
-        public void TMPage.EditTM();
+      
+        public void TMPage.EditTM(IWebDriver.driver, string Description)
 
         {   
-            Thread.Sleep(3000);
+            Thread.Sleep(4000);
             IWebElement goToLastPageButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
             goToLastPageButton.Click();
 
@@ -86,7 +93,7 @@ namespace IC2022.Pages
             // edit description textbox
             IWebElement editDescriptionTextbox = driver.FindElement(By.Id("Description"));
             editDescriptionTextbox.Clear();
-            editDescriptionTextbox.SendKeys("IC2022");
+            editDescriptionTextbox.SendKeys(Description);
             Thread.Sleep(1500);
 
             // edit price per unit textbox
@@ -108,7 +115,14 @@ namespace IC2022.Pages
             gotothelastpageButton.Click();
             Thread.Sleep(1500);
 
-        public void TMPage.DeleteTM();
+
+        public string GetEditedDescription(IWebDriver driver) 
+        {
+            IWebElement editedDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last]/td[3]"));
+            return editedDescription.Text;
+        }
+            
+        public void TMPage.DeleteTM(IWebDriver.driver)
 
         {
             Thread.Sleep(3000);

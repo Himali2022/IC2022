@@ -3,7 +3,7 @@
 
 namespace IC2022.Pages
 {
-    public class HomePage
+    public class HomePage : CommonDriver
     {
         public void GoToTMPage(IWebDriver.driver);
 

@@ -10,9 +10,7 @@ namespace IC2022.Tests
         [Test,Order(1), Description ("check if user is able to create a new record with valid data")]
         public void CreateTM_Test()
         {
-            //Home page object initialization and definition
-            HomePage homePageObj = new HomePage();
-            homePageObj.GoToTMPage(driver);
+            CommonDriver
 
             //TM Page object initialization and definition
             TMPage tmPageObj = new TMPage();
@@ -28,7 +26,7 @@ namespace IC2022.Tests
             homePageObj.GoToTMPage(driver);
 
             TMPage tmPageObj = new TMPage();
-            tmPageObj.EditTM(driver);
+            //tmPageObj.EditTM(driver);
 
         }
 
@@ -44,11 +42,7 @@ namespace IC2022.Tests
 
         }
 
-        [TearDown]
-        public void CloseTestRun()
-        {
-            driver.Quit();
-        }
+        
 
         
         
